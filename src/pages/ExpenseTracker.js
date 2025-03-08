@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Pie } from "react-chartjs-2";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
+import { BackendContext } from "../App"; // ✅ Get backend URL from context
 import "../css/expense.css";
 
 Chart.register(ArcElement, Tooltip, Legend);
 
 function ExpenseTracker() {
+  const API_URL = useContext(BackendContext); // ✅ Get API URL from context
   const [expenses, setExpenses] = useState([]);
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
@@ -16,48 +18,63 @@ function ExpenseTracker() {
 
   useEffect(() => {
     const fetchExpenses = async () => {
-      const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/expenses/all", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setExpenses(res.data);
-      setTotalSpent(res.data.reduce((sum, exp) => sum + exp.amount, 0));
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get(`${API_URL}/api/expenses/all`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setExpenses(res.data);
+        setTotalSpent(res.data.reduce((sum, exp) => sum + exp.amount, 0));
+      } catch (error) {
+        console.error("Error fetching expenses:", error);
+      }
     };
     fetchExpenses();
-  }, []);
+  }, [API_URL]);
 
   const handleAddExpense = async (e) => {
     e.preventDefault();
     if (!category || !amount) return alert("Please enter all fields");
 
-    const token = localStorage.getItem("token");
-    await axios.post(
-      recurring ? "http://localhost:5000/api/expenses/recurring/add" : "http://localhost:5000/api/expenses/add",
-      { category, amount },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    window.location.reload();
+    try {
+      const token = localStorage.getItem("token");
+      await axios.post(
+        recurring ? `${API_URL}/api/expenses/recurring/add` : `${API_URL}/api/expenses/add`,
+        { category, amount },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      window.location.reload();
+    } catch (error) {
+      console.error("Error adding expense:", error);
+    }
   };
 
   const editExpense = async (exp) => {
     const newAmount = prompt("Enter new amount:", exp.amount);
     if (!newAmount) return;
 
-    const token = localStorage.getItem("token");
-    await axios.put(`http://localhost:5000/api/expenses/edit/${exp._id}`, { 
-      amount: newAmount 
-    }, { headers: { Authorization: `Bearer ${token}` } });
-
-    window.location.reload();
+    try {
+      const token = localStorage.getItem("token");
+      await axios.put(`${API_URL}/api/expenses/edit/${exp._id}`, { 
+        amount: newAmount 
+      }, { headers: { Authorization: `Bearer ${token}` } });
+      window.location.reload();
+    } catch (error) {
+      console.error("Error editing expense:", error);
+    }
   };
 
   const deleteExpense = async (id) => {
     if (window.confirm("Are you sure you want to delete this expense?")) {
-      const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/expenses/delete/${id}`, { 
-        headers: { Authorization: `Bearer ${token}` } 
-      });
-      window.location.reload();
+      try {
+        const token = localStorage.getItem("token");
+        await axios.delete(`${API_URL}/api/expenses/delete/${id}`, { 
+          headers: { Authorization: `Bearer ${token}` } 
+        });
+        window.location.reload();
+      } catch (error) {
+        console.error("Error deleting expense:", error);
+      }
     }
   };
 

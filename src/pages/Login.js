@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css";
 
+const API_URL = process.env.REACT_APP_BACKEND_URL; // ✅ Use Backend URL
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
+      const res = await axios.post(`${API_URL}/api/auth/login`, { username, password }); // ✅ Use API_URL
       localStorage.setItem("token", res.data.token);
       navigate("/tracker");
     } catch (error) {

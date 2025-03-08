@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../css/reg.css";
 
+const API_URL = process.env.REACT_APP_BACKEND_URL; // ✅ Use Backend URL
+
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +32,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", { username, password });
+      await axios.post(`${API_URL}/api/auth/register`, { username, password }); // ✅ Use API_URL
       setFireworks(true); // Trigger fireworks
       setTimeout(() => {
         navigate("/login");

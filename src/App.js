@@ -13,6 +13,7 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 export const BackendContext = React.createContext(API_URL);
 
+
 function App() {
   return (
     <BackendContext.Provider value={API_URL}>
