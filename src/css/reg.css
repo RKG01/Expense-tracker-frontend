@@ -1,0 +1,113 @@
+
+
+/*register  styles
+
+
+/* --- Full-Screen Background --- */
+.register-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #1e0029, #2a0059);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* --- Floating Bubbles Animation --- */
+  .bubble {
+    position: absolute;
+    bottom: -50px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: rise 3s linear infinite;
+  }
+  
+  @keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+  }
+  
+  /* --- Cyberpunk Glowing Register Card --- */
+  .register-card {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    padding: 40px;
+    text-align: center;
+    width: 350px;
+    color: white;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* --- Floating Inputs --- */
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgb(53, 16, 16);
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  .input-group input:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  }
+  
+  /* --- Password Lightning Effect --- */
+  .lightning-effect {
+    background: radial-gradient(circle, rgba(0,255,0,0.6) 10%, rgba(0,0,0,0.9) 90%);
+    transition: background 0.3s ease-in-out;
+  }
+  
+  /* --- Animated Register Button --- */
+  .register-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(to right, #ff0099, #ff6600);
+    color: white;
+    transition: 0.3s ease-in-out;
+  }
+  .register-btn:hover {
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.8);
+    transform: scale(1.05);
+  }
+  .register-btn:active {
+    transform: scale(0.95);
+  }
+  
+  /* --- Fireworks Animation --- */
+  .fireworks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("https://media.giphy.com/media/3o6ZsXG8PX4pG10cRW/giphy.gif");
+    background-size: cover;
+    z-index: 10;
+    animation: fadeOut 2s ease-in-out forwards;
+  }
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  /* --- Animations --- */
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  

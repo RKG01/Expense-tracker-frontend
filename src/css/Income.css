@@ -1,0 +1,28 @@
+.tracker-container {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .income-form input {
+    padding: 8px;
+    margin: 5px;
+  }
+  
+  .income-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .income-table th, .income-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  button {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 5px;
+  }
+  

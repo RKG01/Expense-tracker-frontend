@@ -1,0 +1,121 @@
+/* Light & Dark Mode */
+body {
+    transition: background 0.5s ease, color 0.5s ease;
+    font-family:'poppins',sans-serif;
+}
+body.light {
+    background: #f5f5f5;
+    color: #222;
+}
+body.dark {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+/* Home Container - Full Width & Height */
+.home-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s ease-in-out;
+}
+
+/* Split Screen Effect */
+.home-container.login-active {
+    background: linear-gradient(to right, #00172D 50%, #0066CC 50%);
+}
+.home-container.register-active {
+    background: linear-gradient(to right, #0066CC 50%, #00A658 50%);
+}
+
+/* Lightning Effect */
+.home-container.login-active::before,
+.home-container.register-active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: 0 0 25px #ffffff;
+    animation: lightning 0.2s infinite;
+}
+
+@keyframes lightning {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; transform: scaleX(1.1); }
+    100% { opacity: 1; }
+}
+
+/* Light/Dark Mode Buttons */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1rem;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+body.light .theme-toggle {
+    background: #222;
+    color: #ffffff;
+}
+body.dark .theme-toggle {
+    background: #ffffff;
+    color: #222;
+}
+
+/* Home Links */
+.home-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+/* Button Styles */
+.btn {
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 15px 30px;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+/* Login Button */
+.login-btn {
+    background: #0056b3;
+    color: white;
+}
+.login-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 86, 179, 0.9);
+}
+
+/* Register Button */
+.register-btn {
+    background: #009b4e;
+    color: white;
+}
+.register-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 155, 78, 0.9);
+}
+
+.head{
+     text-shadow: #009b4e;
+     text-wrap-mode: normal;
+     text-decoration: dashed;
+}

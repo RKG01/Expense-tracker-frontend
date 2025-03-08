@@ -1,0 +1,97 @@
+
+
+/* login.js
+/* --- Full-Screen Background --- */
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #141e30, #243b55);
+  animation: fadeIn 1s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+/* --- Dynamic Background Glow --- */
+.login-container.focus-username {
+  background: linear-gradient(to right, #001f3f, #00509e);
+}
+.login-container.focus-password {
+  background: linear-gradient(to right, #004d00, #007a00);
+}
+
+/* --- Glassmorphism Login Card --- */
+.login-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  text-align: center;
+  width: 350px;
+  color: white;
+  animation: popUp 0.6s ease-in-out;
+}
+
+/* --- Floating Input Fields --- */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white; /* Ensures visibility */
+    transition: 0.3s ease-in-out;
+  }
+  
+  .input-group input::placeholder {
+    color: white; /* Light grey for better readability */
+  }
+  
+  .input-group input:focus {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+
+/* --- Animated Login Button --- */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white; /* Changed from rgb(134, 62, 62) to white */
+    transition: 0.3s ease-in-out;
+  }
+  
+  .login-btn:hover {
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.8);
+    transform: scale(1.05);
+  }
+  
+  .login-btn:active {
+    transform: scale(0.95);
+  }
+
+/* --- Error Message --- */
+.error-msg {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* --- Animations --- */
+@keyframes popUp {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
