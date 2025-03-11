@@ -31,7 +31,7 @@
   
   /* --- Cyberpunk Glowing Register Card --- */
   .register-card {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(6, 3, 3, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
@@ -54,8 +54,8 @@
     border: none;
     border-radius: 8px;
     outline: none;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgb(53, 16, 16);
+    background: rgba(15, 170, 218, 0.411);
+    color: rgb(5, 0, 0);
     transition: 0.3s ease-in-out;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
   }

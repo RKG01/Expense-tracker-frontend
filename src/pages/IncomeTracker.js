@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/Income.css";
 
+const API_URL = process.env.REACT_APP_BACKEND_URL; // ✅ Use Backend URL
+
 function IncomeTracker() {
   const [incomes, setIncomes] = useState([]);
   const [source, setSource] = useState("");
@@ -12,7 +14,7 @@ function IncomeTracker() {
   useEffect(() => {
     const fetchIncomes = async () => {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/income/all", {
+      const res = await axios.get(`${API_URL}/api/income/all`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setIncomes(res.data);
@@ -28,7 +30,7 @@ function IncomeTracker() {
 
     const token = localStorage.getItem("token");
     await axios.post(
-      "http://localhost:5000/api/income/add",
+      `${API_URL}/api/income/add`,
       { source, amount },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -42,7 +44,7 @@ function IncomeTracker() {
 
     const token = localStorage.getItem("token");
     await axios.put(
-      `http://localhost:5000/api/income/edit/${inc._id}`,
+      `${API_URL}/api/income/edit/${inc._id}`,
       { amount: newAmount },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -54,7 +56,7 @@ function IncomeTracker() {
   const deleteIncome = async (id) => {
     if (window.confirm("Are you sure you want to delete this income?")) {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/income/delete/${id}`, {
+      await axios.delete(`${API_URL}/api/income/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       window.location.reload();

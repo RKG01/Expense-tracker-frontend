@@ -1,8 +1,19 @@
-/* Light & Dark Mode */
-body {
-    transition: background 0.5s ease, color 0.5s ease;
-    font-family:'poppins',sans-serif;
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+/* Light & Dark Mode */
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Light & Dark Mode Styles */
 body.light {
     background: #f5f5f5;
     color: #222;
@@ -12,7 +23,7 @@ body.dark {
     color: #e0e0e0;
 }
 
-/* Home Container - Full Width & Height */
+/* Home Container - Centered */
 .home-container {
     width: 100vw;
     height: 100vh;
@@ -23,15 +34,15 @@ body.dark {
     text-align: center;
     position: relative;
     overflow: hidden;
-    transition: background 0.5s ease-in-out;
+    padding: 20px;
 }
 
 /* Split Screen Effect */
 .home-container.login-active {
-    background: linear-gradient(to right, #00172D 50%, #0066CC 50%);
+    background: linear-gradient(to right, #0b0f3b 50%, #0066CC 50%);
 }
 .home-container.register-active {
-    background: linear-gradient(to right, #0066CC 50%, #00A658 50%);
+    background: linear-gradient(to right, #0066CC 50%, #0f4e31 50%);
 }
 
 /* Lightning Effect */
@@ -54,7 +65,7 @@ body.dark {
     100% { opacity: 1; }
 }
 
-/* Light/Dark Mode Buttons */
+/* Light/Dark Mode Toggle */
 .theme-toggle {
     position: absolute;
     top: 20px;
@@ -75,23 +86,43 @@ body.dark .theme-toggle {
     color: #222;
 }
 
+/* Centering the Content */
+.home-content {
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Head Styling */
+.head {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 155, 78, 0.7);
+    text-align: center;
+    word-wrap: break-word;
+}
+
 /* Home Links */
 .home-links {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 30px;
+    margin-top: 10px;
 }
 
 /* Button Styles */
 .btn {
     text-decoration: none;
     font-size: 1.4rem;
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 10px;
     transition: 0.3s ease-in-out;
     font-weight: bold;
-    position: relative;
-    z-index: 2;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
 }
 
 /* Login Button */
@@ -114,8 +145,16 @@ body.dark .theme-toggle {
     box-shadow: 0 0 20px rgba(0, 155, 78, 0.9);
 }
 
-.head{
-     text-shadow: #009b4e;
-     text-wrap-mode: normal;
-     text-decoration: dashed;
+/* Responsive Fix */
+@media (max-width: 768px) {
+    .home-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .home-container {
+        padding: 40px 20px;
+    }
+    .head {
+        font-size: 1.8rem;
+    }
 }

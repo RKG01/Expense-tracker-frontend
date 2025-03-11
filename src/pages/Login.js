@@ -26,6 +26,15 @@ function Login() {
 
   return (
     <div className={`login-container ${focus}`}>
+      <div class="snow-container">
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+</div>
+
       <div className="login-card">
         <h2>Login</h2>
         <form onSubmit={handleLogin} className="login-form">

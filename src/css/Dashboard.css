@@ -1,3 +1,11 @@
+*{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+
+
 .dashboard-container {
     text-align: center;
     padding: 20px;
@@ -16,7 +24,7 @@
   }
   
   .dashboard-btn {
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    background: linear-gradient(135deg, #0b0c10, #a777e3);
     color: white;
     border: none;
     padding: 12px 20px;
